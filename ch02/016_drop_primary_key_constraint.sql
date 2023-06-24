@@ -1,0 +1,4 @@
+USE tempdb ;
+
+-- Drop existing PRIMARY KEY
+ALTER TABLE dbo.T1 DROP CONSTRAINT PK_T1;
