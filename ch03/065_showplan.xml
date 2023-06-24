@@ -1,0 +1,110 @@
+<ShowPlanXML xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.564" Build="16.0.1050.5">
+    <BatchSequence>
+        <Batch>
+            <Statements>
+                <StmtSimple StatementText="EXEC dbo.GetOrders &apos;20080506&apos;" StatementId="1" StatementCompId="1" StatementType="EXECUTE PROC" RetrievedFromCache="false">
+                    <StoredProc ProcName="dbo.GetOrders">
+                        <Statements>
+                            <StmtSimple StatementText="&#xd;&#xa;CREATE PROC dbo.GetOrders&#xd;&#xa;  @odate AS DATETIME&#xd;&#xa;AS&#xd;&#xa;    SELECT orderid, custid, empid, orderdate&#xd;&#xa;    /* 33145F87-1109-4959-91D6-F1EC81F8428F */&#xd;&#xa;    FROM Sales.Orders&#xd;&#xa;    WHERE orderdate &gt;= @odate" StatementId="2" StatementCompId="3" StatementType="SELECT" StatementSqlHandle="0x09005C4CBB6DA8E62462884B2E27EA18011E0000000000000000000000000000000000000000000000000000" DatabaseContextSettingsId="1" ParentObjectId="34099162" StatementParameterizationType="0" RetrievedFromCache="true" PlanGuideDB="InsideTSQL2008" PlanGuideName="PG_GetOrders_Selective" StatementSubTreeCost="0.00657038" StatementEstRows="1" SecurityPolicyApplied="false" StatementOptmLevel="FULL" QueryHash="0x333999609646034E" QueryPlanHash="0x5F2558961E986D1B" StatementOptmEarlyAbortReason="GoodEnoughPlanFound" CardinalityEstimationModelVersion="160">
+                                <StatementSetOptions QUOTED_IDENTIFIER="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" NUMERIC_ROUNDABORT="false"></StatementSetOptions>
+                                <QueryPlan CachedPlanSize="32" CompileTime="0" CompileCPU="0" CompileMemory="232">
+                                    <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0" GrantedMemory="0" MaxUsedMemory="0"></MemoryGrantInfo>
+                                    <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="416459" EstimatedPagesCached="104114" EstimatedAvailableDegreeOfParallelism="2" MaxCompileMemory="980656"></OptimizerHardwareDependentProperties>
+                                    <OptimizerStatsUsage>
+                                        <StatisticsInfo LastUpdate="2023-06-23T08:56:43.31" ModificationCount="1" SamplingPercent="100" Statistics="[idx_nc_orderdate]" Table="[Orders]" Schema="[Sales]" Database="[InsideTSQL2008]"></StatisticsInfo>
+                                    </OptimizerStatsUsage>
+                                    <RelOp NodeId="0" PhysicalOp="Nested Loops" LogicalOp="Inner Join" EstimateRows="1" EstimateIO="0" EstimateCPU="4.18e-06" AvgRowSize="27" EstimatedTotalSubtreeCost="0.00657038" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                        <OutputList>
+                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderid"></ColumnReference>
+                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="custid"></ColumnReference>
+                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="empid"></ColumnReference>
+                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderdate"></ColumnReference>
+                                        </OutputList>
+                                        <NestedLoops Optimized="0">
+                                            <OuterReferences>
+                                                <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderid"></ColumnReference>
+                                            </OuterReferences>
+                                            <RelOp NodeId="1" PhysicalOp="Index Seek" LogicalOp="Index Seek" EstimateRows="1" EstimatedRowsRead="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="19" EstimatedTotalSubtreeCost="0.0032831" TableCardinality="831" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                                <OutputList>
+                                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderid"></ColumnReference>
+                                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderdate"></ColumnReference>
+                                                </OutputList>
+                                                <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                                    <DefinedValues>
+                                                        <DefinedValue>
+                                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderid"></ColumnReference>
+                                                        </DefinedValue>
+                                                        <DefinedValue>
+                                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderdate"></ColumnReference>
+                                                        </DefinedValue>
+                                                    </DefinedValues>
+                                                    <Object Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Index="[idx_nc_orderdate]" IndexKind="NonClustered" Storage="RowStore"></Object>
+                                                    <SeekPredicates>
+                                                        <SeekPredicateNew>
+                                                            <SeekKeys>
+                                                                <StartRange ScanType="GE">
+                                                                    <RangeColumns>
+                                                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderdate"></ColumnReference>
+                                                                    </RangeColumns>
+                                                                    <RangeExpressions>
+                                                                        <ScalarOperator ScalarString="[@odate]">
+                                                                            <Identifier>
+                                                                                <ColumnReference Column="@odate"></ColumnReference>
+                                                                            </Identifier>
+                                                                        </ScalarOperator>
+                                                                    </RangeExpressions>
+                                                                </StartRange>
+                                                            </SeekKeys>
+                                                        </SeekPredicateNew>
+                                                    </SeekPredicates>
+                                                </IndexScan>
+                                            </RelOp>
+                                            <RelOp NodeId="3" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="15" EstimatedTotalSubtreeCost="0.0032831" TableCardinality="831" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                                <OutputList>
+                                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="custid"></ColumnReference>
+                                                    <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="empid"></ColumnReference>
+                                                </OutputList>
+                                                <IndexScan Lookup="1" Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                                    <DefinedValues>
+                                                        <DefinedValue>
+                                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="custid"></ColumnReference>
+                                                        </DefinedValue>
+                                                        <DefinedValue>
+                                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="empid"></ColumnReference>
+                                                        </DefinedValue>
+                                                    </DefinedValues>
+                                                    <Object Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Index="[PK_Orders]" TableReferenceId="-1" IndexKind="Clustered" Storage="RowStore"></Object>
+                                                    <SeekPredicates>
+                                                        <SeekPredicateNew>
+                                                            <SeekKeys>
+                                                                <Prefix ScanType="EQ">
+                                                                    <RangeColumns>
+                                                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderid"></ColumnReference>
+                                                                    </RangeColumns>
+                                                                    <RangeExpressions>
+                                                                        <ScalarOperator ScalarString="[InsideTSQL2008].[Sales].[Orders].[orderid]">
+                                                                            <Identifier>
+                                                                                <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="orderid"></ColumnReference>
+                                                                            </Identifier>
+                                                                        </ScalarOperator>
+                                                                    </RangeExpressions>
+                                                                </Prefix>
+                                                            </SeekKeys>
+                                                        </SeekPredicateNew>
+                                                    </SeekPredicates>
+                                                </IndexScan>
+                                            </RelOp>
+                                        </NestedLoops>
+                                    </RelOp>
+                                    <ParameterList>
+                                        <ColumnReference Column="@odate" ParameterDataType="datetime" ParameterCompiledValue="&apos;9999-12-31 00:00:00.000&apos;"></ColumnReference>
+                                    </ParameterList>
+                                </QueryPlan>
+                            </StmtSimple>
+                        </Statements>
+                    </StoredProc>
+                </StmtSimple>
+            </Statements>
+        </Batch>
+    </BatchSequence>
+</ShowPlanXML>
