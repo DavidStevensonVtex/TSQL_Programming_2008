@@ -1,0 +1,12 @@
+USE InsideTSQL2008 ;
+
+-- Create AddOne function
+IF OBJECT_ID('dbo.AddOne', 'FN') IS NOT NULL
+  DROP FUNCTION dbo.AddOne;
+GO
+CREATE FUNCTION dbo.AddOne(@i AS INT) RETURNS INT
+AS
+BEGIN
+  RETURN @i + 1;
+END
+GO
