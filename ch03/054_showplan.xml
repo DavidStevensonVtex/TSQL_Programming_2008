@@ -1,0 +1,77 @@
+<ShowPlanXML xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.564" Build="16.0.1050.5">
+    <BatchSequence>
+        <Batch>
+            <Statements>
+                <StmtSimple StatementText="SELECT empid, COUNT(*) AS cnt&#xd;&#xa;FROM Sales.Orders&#xd;&#xa;GROUP BY empid" StatementId="1" StatementCompId="1" StatementType="SELECT" RetrievedFromCache="false" PlanGuideDB="InsideTSQL2008" PlanGuideName="PG_MyQuery1_MAXDOP1" StatementSubTreeCost="0.00543994" StatementEstRows="9" SecurityPolicyApplied="false" StatementOptmLevel="FULL" QueryHash="0x0EFB9D9BE0702E62" QueryPlanHash="0x3BFDC76DDA1B0525" StatementOptmEarlyAbortReason="GoodEnoughPlanFound" CardinalityEstimationModelVersion="160">
+                    <StatementSetOptions QUOTED_IDENTIFIER="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" NUMERIC_ROUNDABORT="false"></StatementSetOptions>
+                    <QueryPlan NonParallelPlanReason="MaxDOPSetToOne" CachedPlanSize="24" CompileTime="2" CompileCPU="2" CompileMemory="208">
+                        <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0" GrantedMemory="0" MaxUsedMemory="0"></MemoryGrantInfo>
+                        <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="416459" EstimatedPagesCached="104114" EstimatedAvailableDegreeOfParallelism="1" MaxCompileMemory="1739984"></OptimizerHardwareDependentProperties>
+                        <OptimizerStatsUsage>
+                            <StatisticsInfo LastUpdate="2023-06-23T08:56:43.30" ModificationCount="1" SamplingPercent="100" Statistics="[idx_nc_empid]" Table="[Orders]" Schema="[Sales]" Database="[InsideTSQL2008]"></StatisticsInfo>
+                            <StatisticsInfo LastUpdate="2023-06-23T08:56:43.31" ModificationCount="1" SamplingPercent="100" Statistics="[idx_nc_shippeddate]" Table="[Orders]" Schema="[Sales]" Database="[InsideTSQL2008]"></StatisticsInfo>
+                            <StatisticsInfo LastUpdate="2023-06-23T08:56:43.30" ModificationCount="1" SamplingPercent="100" Statistics="[idx_nc_custid]" Table="[Orders]" Schema="[Sales]" Database="[InsideTSQL2008]"></StatisticsInfo>
+                            <StatisticsInfo LastUpdate="2023-06-23T08:56:43.31" ModificationCount="1" SamplingPercent="100" Statistics="[idx_nc_shippostalcode]" Table="[Orders]" Schema="[Sales]" Database="[InsideTSQL2008]"></StatisticsInfo>
+                            <StatisticsInfo LastUpdate="2023-06-23T08:56:43.30" ModificationCount="13" SamplingPercent="100" Statistics="[idx_nc_shipperid]" Table="[Orders]" Schema="[Sales]" Database="[InsideTSQL2008]"></StatisticsInfo>
+                            <StatisticsInfo LastUpdate="2023-06-23T08:56:43.31" ModificationCount="1" SamplingPercent="100" Statistics="[idx_nc_orderdate]" Table="[Orders]" Schema="[Sales]" Database="[InsideTSQL2008]"></StatisticsInfo>
+                        </OptimizerStatsUsage>
+                        <RelOp NodeId="0" PhysicalOp="Compute Scalar" LogicalOp="Compute Scalar" EstimateRows="9" EstimateIO="0" EstimateCPU="0" AvgRowSize="15" EstimatedTotalSubtreeCost="0.00543994" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                            <OutputList>
+                                <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="empid"></ColumnReference>
+                                <ColumnReference Column="Expr1002"></ColumnReference>
+                            </OutputList>
+                            <ComputeScalar>
+                                <DefinedValues>
+                                    <DefinedValue>
+                                        <ColumnReference Column="Expr1002"></ColumnReference>
+                                        <ScalarOperator ScalarString="CONVERT_IMPLICIT(int,[Expr1005],0)">
+                                            <Convert DataType="int" Style="0" Implicit="1">
+                                                <ScalarOperator>
+                                                    <Identifier>
+                                                        <ColumnReference Column="Expr1005"></ColumnReference>
+                                                    </Identifier>
+                                                </ScalarOperator>
+                                            </Convert>
+                                        </ScalarOperator>
+                                    </DefinedValue>
+                                </DefinedValues>
+                                <RelOp NodeId="1" PhysicalOp="Stream Aggregate" LogicalOp="Aggregate" EstimateRows="9" EstimateIO="0" EstimateCPU="0.0005031" AvgRowSize="15" EstimatedTotalSubtreeCost="0.00543994" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                    <OutputList>
+                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="empid"></ColumnReference>
+                                        <ColumnReference Column="Expr1005"></ColumnReference>
+                                    </OutputList>
+                                    <StreamAggregate>
+                                        <DefinedValues>
+                                            <DefinedValue>
+                                                <ColumnReference Column="Expr1005"></ColumnReference>
+                                                <ScalarOperator ScalarString="Count(*)">
+                                                    <Aggregate AggType="countstar" Distinct="0"></Aggregate>
+                                                </ScalarOperator>
+                                            </DefinedValue>
+                                        </DefinedValues>
+                                        <GroupBy>
+                                            <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="empid"></ColumnReference>
+                                        </GroupBy>
+                                        <RelOp NodeId="2" PhysicalOp="Index Scan" LogicalOp="Index Scan" EstimateRows="831" EstimatedRowsRead="831" EstimateIO="0.00386574" EstimateCPU="0.0010711" AvgRowSize="11" EstimatedTotalSubtreeCost="0.00493684" TableCardinality="831" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                                            <OutputList>
+                                                <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="empid"></ColumnReference>
+                                            </OutputList>
+                                            <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                                                <DefinedValues>
+                                                    <DefinedValue>
+                                                        <ColumnReference Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Column="empid"></ColumnReference>
+                                                    </DefinedValue>
+                                                </DefinedValues>
+                                                <Object Database="[InsideTSQL2008]" Schema="[Sales]" Table="[Orders]" Index="[idx_nc_empid]" IndexKind="NonClustered" Storage="RowStore"></Object>
+                                            </IndexScan>
+                                        </RelOp>
+                                    </StreamAggregate>
+                                </RelOp>
+                            </ComputeScalar>
+                        </RelOp>
+                    </QueryPlan>
+                </StmtSimple>
+            </Statements>
+        </Batch>
+    </BatchSequence>
+</ShowPlanXML>
