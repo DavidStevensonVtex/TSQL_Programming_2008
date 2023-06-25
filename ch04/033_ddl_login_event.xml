@@ -1,0 +1,18 @@
+<EVENT_INSTANCE>
+  <EventType>CREATE_LOGIN</EventType>
+  <PostTime>2023-06-25T16:38:04.090</PostTime>
+  <SPID>52</SPID>
+  <ServerName>DSTEVENSONWIN10\SQL_2022</ServerName>
+  <LoginName>DSTEVENSONWIN10\drste</LoginName>
+  <ObjectName>login1</ObjectName>
+  <ObjectType>LOGIN</ObjectType>
+  <DefaultLanguage>us_english</DefaultLanguage>
+  <DefaultDatabase>master</DefaultDatabase>
+  <LoginType>SQL Login</LoginType>
+  <SID>rlrn/7ZhuEiXECiLPevRlQ==</SID>
+  <TSQLCommand>
+    <SetOptions ANSI_NULLS="ON" ANSI_NULL_DEFAULT="ON" ANSI_PADDING="ON" QUOTED_IDENTIFIER="ON" ENCRYPTED="FALSE" />
+    <CommandText>CREATE LOGIN login1 WITH PASSWORD = '******';
+</CommandText>
+  </TSQLCommand>
+</EVENT_INSTANCE>
