@@ -1,0 +1,16 @@
+<EVENT_INSTANCE>
+  <EventType>CREATE_TABLE</EventType>
+  <PostTime>2023-06-25T16:11:33.243</PostTime>
+  <SPID>61</SPID>
+  <ServerName>DSTEVENSONWIN10\SQL_2022</ServerName>
+  <LoginName>DSTEVENSONWIN10\drste</LoginName>
+  <UserName>dbo</UserName>
+  <DatabaseName>testdb</DatabaseName>
+  <SchemaName>dbo</SchemaName>
+  <ObjectName>T1</ObjectName>
+  <ObjectType>TABLE</ObjectType>
+  <TSQLCommand>
+    <SetOptions ANSI_NULLS="ON" ANSI_NULL_DEFAULT="ON" ANSI_PADDING="ON" QUOTED_IDENTIFIER="ON" ENCRYPTED="FALSE" />
+    <CommandText>CREATE TABLE dbo.T1(col1 INT NOT NULL PRIMARY KEY)</CommandText>
+  </TSQLCommand>
+</EVENT_INSTANCE>
