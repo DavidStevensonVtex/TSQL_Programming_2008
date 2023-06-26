@@ -14,5 +14,5 @@ BEGIN
 END
 GO
 
-Msg 1205, Level 13, State 45, Line 12
-Transaction (Process ID 54) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+-- Msg 1205, Level 13, State 45, Line 12
+-- Transaction (Process ID 54) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
