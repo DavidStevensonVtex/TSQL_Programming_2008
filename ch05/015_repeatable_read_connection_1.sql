@@ -29,9 +29,9 @@ GO
 --Version 1
 
 -- Connection 1
- SELECT col2 FROM dbo.T1 WHERE keycol = 2;
- COMMIT TRAN
- GO
+ --SELECT col2 FROM dbo.T1 WHERE keycol = 2;
+ --COMMIT TRAN
+ --GO
 
  --col2 
 -----------
