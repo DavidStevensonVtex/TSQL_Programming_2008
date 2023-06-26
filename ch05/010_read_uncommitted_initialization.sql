@@ -9,6 +9,16 @@ GO
 -- Read Uncommitted
 ---------------------------------------------------------------------
 
+--Of course, at this level readers might get uncommitted changes. In 
+--other words, dirty reads can happen, as well as all other concurrency
+--related problems.
+
+--Read uncommitted is the worst isolation level in terms of consistency
+--but the best in terms on concurrency.
+
+--As a reminder, the NOLOCK table hint is just a synonym to the 
+--READ UNCOMMITTED hint.
+
 -- First initialize the data
 UPDATE dbo.T1 SET col2 = 'Version 1' WHERE keycol = 2;
 
