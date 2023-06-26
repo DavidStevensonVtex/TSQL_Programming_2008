@@ -22,3 +22,7 @@ GO
 -- SET LOCK_TIMEOUT 5000;
 -- SELECT keycol, col1, col2 FROM dbo.T1;
 -- GO
+
+-- Remove timeout
+-- SET LOCK_TIMEOUT -1;
+-- GO
