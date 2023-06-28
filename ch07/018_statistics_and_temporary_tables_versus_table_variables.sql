@@ -1,0 +1,28 @@
+SET NOCOUNT ON ;
+
+-- Temp Table Example
+SELECT n AS col1, (n - 1) % 10000 + 1 AS col2,
+  CAST('a' AS CHAR(200)) AS filler
+INTO #T
+FROM dbo.Nums
+WHERE n <= 100000;
+
+ALTER TABLE #T ADD PRIMARY KEY(col1);
+CREATE UNIQUE INDEX idx_col2_col1 ON #T(col2, col1);
+GO
+
+SET STATISTICS IO ON ;
+
+SELECT * FROM #T WHERE col1 = 1;
+SELECT * FROM #T WHERE col1 <= 50000;
+
+SELECT * FROM #T WHERE col2 = 1;
+SELECT * FROM #T WHERE col2 <= 2;
+SELECT * FROM #T WHERE col2 <= 5000;
+GO
+
+SET STATISTICS IO ON ;
+
+-- Cleanup
+DROP TABLE #T;
+GO
