@@ -21,8 +21,8 @@ WHERE rnk = 1;
 SET STATISTICS IO OFF ;
 
 -- Cleanup
--- DROP INDEX Sales.Orders.idx_cid_od_i_eid_oid;
--- DROP INDEX Sales.Orders.idx_cid_od_i_eid_oidD;
+ --DROP INDEX Sales.Orders.idx_cid_od_i_eid_oid;
+ --DROP INDEX Sales.Orders.idx_cid_od_i_eid_oidD;
 
 
 -- orderid     orderdate               custid      empid       rnk
