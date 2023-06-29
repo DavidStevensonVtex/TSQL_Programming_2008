@@ -56,3 +56,18 @@ GO
 --B301       1           600         203
 --B201       3           1000        212
 --B101       5           1500        892
+
+-- First remove rooms where seats > 600
+--DELETE FROM dbo.Rooms WHERE seats > 600;
+--GO
+--(3 rows affected)
+-- Rerun this solution.
+
+--Msg 50000, Level 16, State 1, Line 30
+--Not enough rooms for events.
+--roomid     eventid     seats       attendees
+------------ ----------- ----------- -----------
+--R203       2           50          48
+--R302       6           55          48
+--B102       4           100         98
+--B301       1           600         203
