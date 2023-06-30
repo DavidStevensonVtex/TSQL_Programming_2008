@@ -40,3 +40,25 @@ GO
 --(1 row affected)
 
 --@myresult = 42
+
+-- Book: Remember that if you create a temporary table in a calling batch, it is visible to an inner
+-- dynamic batch. So you could also create a temporary table first, and insert the value into the
+-- temporary table within the dynamic batch using a plain INSERT statement:
+
+-- Using INSERT INTO
+SET NOCOUNT ON ;
+DECLARE @sql AS VARCHAR(500) =
+  'DECLARE @result AS INT = 42;
+INSERT INTO #T(result) VALUES(@result);'
+
+DECLARE @myresult AS INT;
+CREATE TABLE #T(result INT);
+EXEC(@sql);
+SET @myresult = (SELECT result FROM #T);
+SELECT @myresult AS result;
+DROP TABLE #T;
+GO
+
+--result
+-------------
+--42
